@@ -1,0 +1,9 @@
+.Checkbox {
+  margin: 0px 10px 0px !important;
+  cursor: pointer;
+};
+.CheckboxLabel {
+  cursor: pointer;
+  display: block;
+  font-weight: normal;
+};
