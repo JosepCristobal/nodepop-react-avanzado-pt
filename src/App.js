@@ -4,7 +4,6 @@ import T from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import { LoginPage, PrivateRoute } from './components/auth';
 import { AdvertsPage, NewAdvertPage, AdvertDetailPage } from './components/adverts';
-import { AuthContextProvider } from './components/auth/context';
 import  { Redirect } from 'react-router-dom'
 
 // function App({ isInitiallyLogged }) {
@@ -12,23 +11,9 @@ import  { Redirect } from 'react-router-dom'
   //const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
   const ref = React.useRef(null);
 
-  const handleLogin = () => {
-   // setIsLogged(true);
-  };
-
-  const handleLogout = () => {
-    //setIsLogged(false)
-  };
-
-  const authValue = {
-    isLogged: false,
-    onLogout: handleLogout,
-    onLogin: handleLogin,
-  };
-
   return (
     <div className="App">
-       <AuthContextProvider value={authValue}>
+       
        <Switch>
           <Route path="/login">
             <LoginPage />
@@ -56,7 +41,7 @@ import  { Redirect } from 'react-router-dom'
             </div>
           </Route>
         </Switch>
-       </AuthContextProvider>
+       
     </div>
   );
 }

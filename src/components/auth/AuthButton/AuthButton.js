@@ -1,8 +1,9 @@
 import T from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from '../../shared';
 import { logout } from '../../../api/auth';
-import { AuthContextConsumer } from '../context';
+import { getIsLogged } from '../../../store/selectors';
 
 const AuthButton = ({ className, isLogged, onLogout }) => {
   const handleLogoutClick = () => {
@@ -30,20 +31,6 @@ AuthButton.defaultProps = {
   isLogged: false,
 };
 
-const ConnectedAuthButton = props => {
-  return (
-    <AuthContextConsumer>
-      {value => {
-        return (
-          <AuthButton
-            isLogged={value.isLogged}
-            onLogout={value.onLogout}
-            {...props}
-          />
-        );
-      }}
-    </AuthContextConsumer>
-  );
-};
+const mapStateToProps = state => ({isLogged: getIsLogged(state)})
 
-export default ConnectedAuthButton;
+export default connect(mapStateToProps)(AuthButton);

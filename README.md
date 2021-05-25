@@ -19,3 +19,7 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 11. Redux devTools plug-in en el navegador Chrome.
 12. Instalamos npm install redux-logger
 13. Ceamos fichero index.js en carpeta api para hacer la exportación de toda la carpeta de una sola vez.
+14. Borramos el context.js de auth ya que a partir de ahora no lo utilizaremos-
+15. En App borramos todas las referencias al contexto.
+16. En PrivateRoute borramos todas las referencias al contexto.
+17. Ahora vamos al AuthButton.js.
