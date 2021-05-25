@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
 import * as reducers from './reducers';
-import * as api from '../api';
+import * as api from '../api/api';
 
 
 
