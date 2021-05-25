@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../shared';
 import { logout } from '../../../api/auth';
 import { getIsLogged } from '../../../store/selectors';
+import { authLogout } from '../../../store/actions';
 
 const AuthButton = ({ className, isLogged, onLogout }) => {
   const handleLogoutClick = () => {
@@ -31,6 +32,8 @@ AuthButton.defaultProps = {
   isLogged: false,
 };
 
-const mapStateToProps = state => ({isLogged: getIsLogged(state)})
+const mapStateToProps = (state, ownProps) => ({isLogged: getIsLogged(state)})
 
-export default connect(mapStateToProps)(AuthButton);
+const mapDispatchToProps = (dispatch,owunProps) => ({onLogout: () => dispatch(authLogout()),})
+
+export default connect(mapStateToProps,mapDispatchToProps)(AuthButton);

@@ -23,3 +23,7 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 15. En App borramos todas las referencias al contexto.
 16. En PrivateRoute borramos todas las referencias al contexto.
 17. Ahora vamos al AuthButton.js.
+18. Hasta ahora hemos utilizado el mapStateToProps y a en el paso 19 utilizaremos el mapDispatchToProps.
+19. Estamos en LoginPage.js para el tema de la autenticación.
+20. Completamos actions.js
+21. Vamos al boton de logout en AuthButton.js para añadir el mapDispatchToProps

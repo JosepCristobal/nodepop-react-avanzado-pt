@@ -11,6 +11,7 @@ import {
     ADVERTS_CREATED_FAILURE,
     UI_RESET_ERROR,
     ADVERTS_DETAIL_SUCCESS,
+    AUTH_LOGIN,
   } from './types';
   
 export const initialState = {
@@ -25,13 +26,26 @@ ui: {
 },
 };
 
-export function auth(state = initialState.auth, action) {
-    switch (action.type) {
-        case AUTH_LOGIN_SUCCESS:
-        return true;
+function reducer(state = initialState, action){
+    switch (action.type){
+        case AUTH_LOGIN:
+            return {...state, auth: true};
         case AUTH_LOGOUT:
-        return false;
+            return {...state, auth: false};
         default:
-        return state;
+            return state;
     }
 }
+
+// export function auth(state = initialState.auth, action) {
+//     switch (action.type) {
+//         case AUTH_LOGIN_SUCCESS:
+//         return true;
+//         case AUTH_LOGOUT:
+//         return false;
+//         default:
+//         return state;
+//     }
+// }
+
+export default reducer;

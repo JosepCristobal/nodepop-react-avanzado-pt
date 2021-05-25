@@ -1,4 +1,5 @@
 import {
+    AUTH_LOGIN,
     AUTH_LOGIN_REQUEST,
     AUTH_LOGIN_SUCCESS,
     AUTH_LOGIN_FAILURE,
@@ -12,3 +13,15 @@ import {
     UI_RESET_ERROR,
     ADVERTS_DETAIL_SUCCESS,
   } from './types';
+
+  export const authLogin = () => {
+    return {
+      type: AUTH_LOGIN,
+    };
+  };
+
+  export const authLogout = () => {
+    return {
+      type: AUTH_LOGOUT,
+    };
+  };

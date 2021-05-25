@@ -1,12 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import LoginForm from './LoginForm';
 import { login } from '../../../api/auth';
+import { authLogin } from '../../../store/actions'
 
 import './LoginPage.css';
-import { useAuthContext } from '../context';
 import { useHistory, useLocation } from 'react-router';
 
-function LoginPage() {
+function LoginPage({onLogin}) {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const isLogged = React.useRef(false);
@@ -15,7 +16,6 @@ function LoginPage() {
   const resetError = React.useCallback(() => setError(), []);
   const history = useHistory();
   const location = useLocation();
-  const { onLogin } = useAuthContext();
 
   React.useEffect(() => {
     if (isLogged.current) {
@@ -61,4 +61,8 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+const mapDispatchToProps = dispatch => ({
+  onLogin: () => dispatch(authLogin)
+});
+
+export default connect(null,mapDispatchToProps)(LoginPage);
