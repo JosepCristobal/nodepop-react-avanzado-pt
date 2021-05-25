@@ -5,10 +5,19 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
 import * as reducers from './reducers';
-import * as api from '../api/api';
+import * as api from '../api';
 
 
-
+function logger(store) {
+  return function (next) {
+    return function (action) {
+      console.log('***dispatching', action);
+      let result = next(action);
+      console.log('***next state', store.getState());
+      return result;
+    };
+  };
+}
 
 const configureStore = ({ preloadedState, history }) => {
     const middleware = [

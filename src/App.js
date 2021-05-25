@@ -7,18 +7,21 @@ import { AdvertsPage, NewAdvertPage, AdvertDetailPage } from './components/adver
 import { AuthContextProvider } from './components/auth/context';
 import  { Redirect } from 'react-router-dom'
 
-function App({ isInitiallyLogged }) {
-  const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
+// function App({ isInitiallyLogged }) {
+  function App() {
+  //const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
   const ref = React.useRef(null);
 
   const handleLogin = () => {
-    setIsLogged(true);
+   // setIsLogged(true);
   };
 
-  const handleLogout = () => setIsLogged(false);
+  const handleLogout = () => {
+    //setIsLogged(false)
+  };
 
   const authValue = {
-    isLogged,
+    isLogged: false,
     onLogout: handleLogout,
     onLogin: handleLogin,
   };
@@ -58,8 +61,5 @@ function App({ isInitiallyLogged }) {
   );
 }
 
-App.propTypes = {
-  isInitiallyLogged: T.bool.isRequired,
-};
 
 export default App;
