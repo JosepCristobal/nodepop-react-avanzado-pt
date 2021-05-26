@@ -1,31 +1,33 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import LoginForm from './LoginForm';
 import { login } from '../../../api/auth';
-import { authLogin } from '../../../store/actions'
-
+import {authLoginRequest, authLoginSucces, authLoginFailure , resetError} from '../../../store/actions'
+import { getUi } from '../../../store/selectors'
 import './LoginPage.css';
 import { useHistory, useLocation } from 'react-router';
 
-function LoginPage({onLogin}) {
-  const [error, setError] = React.useState(null);
-  const [isLoading, setIsLoading] = React.useState(false);
+function LoginPage() {
+  // const [error, setError] = React.useState(null);
+  // const [isLoading, setIsLoading] = React.useState(false);
   const isLogged = React.useRef(false);
   const firstTime = React.useRef(true);
+  const dispatch = useDispatch();
+  const {isLoading, error} = useSelector(getUi);
 
-  const resetError = React.useCallback(() => setError(), []);
+  //const onLogin = () => dispatch(authLoginSucces());
+
+  //const resetError = React.useCallback(() => setError(), []);
   const history = useHistory();
   const location = useLocation();
 
-  React.useEffect(() => {
-    if (isLogged.current) {
-      onLogin();
-      const { from } = location.state || { from: { pathname: '/' } };
-      // const from = location.state ? location.state.from : {pathname: '/'}
+  // React.useEffect(() => {
+  //    // onLogin();
+      
+  //     // const from = location.state ? location.state.from : {pathname: '/'}
 
-      history.replace(from);
-    }
-  });
+      
+  // });
 
   React.useEffect(() => {
     if (firstTime) {
@@ -36,16 +38,17 @@ function LoginPage({onLogin}) {
 
   const handleSubmit = async credentials => {
     // login(credentials).then(() => onLogin());
-    resetError();
-    setIsLoading(true);
+    dispatch(authLoginRequest());
+
     try {
       await login(credentials);
-      isLogged.current = true;
+      //isLogged.current = true;
+      dispatch(authLoginSucces());
+      const { from } = location.state || { from: { pathname: '/' } };
+      history.replace(from);
     } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
+      dispatch(authLoginFailure(error));
+    } 
   };
 
   return (
@@ -53,7 +56,7 @@ function LoginPage({onLogin}) {
       <h1 className="loginPage-title">Log in to NodePop</h1>
       <LoginForm isLoading={isLoading} onSubmit={handleSubmit} />
       {error && (
-        <div onClick={resetError} className="loginPage-error">
+        <div onClick={() => dispatch(resetError())} className="loginPage-error">
           {error.message}
         </div>
       )}
@@ -61,8 +64,9 @@ function LoginPage({onLogin}) {
   );
 }
 
-const mapDispatchToProps = dispatch => ({
-  onLogin: () => dispatch(authLogin())
-});
+// const mapDispatchToProps = dispatch => ({
+//   onLogin: () => dispatch(authLogin())
+// });
 
-export default connect(null,mapDispatchToProps)(LoginPage);
+// export default connect(null,mapDispatchToProps)(LoginPage);
+export default LoginPage;

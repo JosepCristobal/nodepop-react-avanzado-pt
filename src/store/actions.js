@@ -16,9 +16,23 @@ import {
     ADVERTS_CREATED,
   } from './types';
 
-  export const authLogin = () => {
+  export const authLoginRequest = () => {
     return {
-      type: AUTH_LOGIN,
+      type: AUTH_LOGIN_REQUEST,
+    };
+  };
+
+  export const authLoginSucces  = () => {
+    return {
+      type: AUTH_LOGIN_SUCCESS,
+    };
+  };
+
+  export const authLoginFailure = (error) => {
+    return {
+      type: AUTH_LOGIN_FAILURE,
+      payload: error,
+      error: true,
     };
   };
 
@@ -31,9 +45,7 @@ import {
   export const advertsLoaded = adverts => {
     return{
       type: ADVERTS_LOADED,
-      payload:{
-        adverts,
-      },
+      payload: adverts,
     }
   }
 
@@ -41,10 +53,15 @@ import {
     return{
       type: ADVERTS_CREATED,
       payload: {
-        advert: {
           ... advert, 
           user:{}, 
-          likes:[]}
-      }
+          likes:[]
+        },
     }
+  }
+
+  export const resetError = () => {
+    return {
+      type: UI_RESET_ERROR,
+    };
   }
