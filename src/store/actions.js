@@ -12,6 +12,7 @@ import {
     ADVERTS_CREATED_FAILURE,
     UI_RESET_ERROR,
     ADVERTS_DETAIL_SUCCESS,
+    ADVERTS_LOADED,
   } from './types';
 
   export const authLogin = () => {
@@ -25,3 +26,12 @@ import {
       type: AUTH_LOGOUT,
     };
   };
+
+  export const advertsLoaded = adverts => {
+    return{
+      type: ADVERTS_LOADED,
+      payload:{
+        adverts,
+      },
+    }
+  }

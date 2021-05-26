@@ -27,9 +27,12 @@ import  { Redirect } from 'react-router-dom'
           <PrivateRoute exact path="/">
             <Redirect to='/adverts'  />
           </PrivateRoute>
-          <PrivateRoute exact path="/adverts">
+          {/* <PrivateRoute exact path="/adverts">
             <AdvertsPage />
-          </PrivateRoute>
+          </PrivateRoute> */}
+          <Route exact path="/adverts">
+            <AdvertsPage />
+          </Route>
           <Route path="/404">
             <div
               style={{

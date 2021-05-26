@@ -12,14 +12,12 @@ import {
     UI_RESET_ERROR,
     ADVERTS_DETAIL_SUCCESS,
     AUTH_LOGIN,
+    ADVERTS_LOADED,
   } from './types';
   
 export const initialState = {
 auth: false,
-adverts: {
-    loaded: false,
-    data: [],
-},
+adverts: [],
 ui: {
     loading: false,
     error: null,
@@ -32,6 +30,8 @@ function reducer(state = initialState, action){
             return {...state, auth: true};
         case AUTH_LOGOUT:
             return {...state, auth: false};
+        case ADVERTS_LOADED:
+            return {...state, adverts: action.payload.adverts};
         default:
             return state;
     }

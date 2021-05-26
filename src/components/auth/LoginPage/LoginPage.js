@@ -62,7 +62,7 @@ function LoginPage({onLogin}) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onLogin: () => dispatch(authLogin)
+  onLogin: () => dispatch(authLogin())
 });
 
 export default connect(null,mapDispatchToProps)(LoginPage);
