@@ -16,7 +16,7 @@ configureClient({ accessToken });
 const history = createBrowserHistory();
 
 const store = configureStore({
-  preloadedState: { auth: !!accessToken, adverts:[] },
+  preloadedState: { auth: !!accessToken },
   history,
 });
 

@@ -1,3 +1,5 @@
+import { combineReducers} from 'react-redux';
+
 import {
     AUTH_LOGIN_REQUEST,
     AUTH_LOGIN_SUCCESS,
@@ -19,26 +21,27 @@ import {
 export const initialState = {
 auth: false,
 adverts: [],
-ui: {
-    loading: false,
-    error: null,
-},
+ui: {},
 };
 
-function reducer(state = initialState, action){
-    switch (action.type){
-        case AUTH_LOGIN:
-            return {...state, auth: true};
-        case AUTH_LOGOUT:
-            return {...state, auth: false};
-        case ADVERTS_LOADED:
-            return {...state, adverts: action.payload.adverts};
-        case ADVERTS_CREATED:
-            return {...state, adverts: state.adverts.concat(action.payload.advert) };
-        default:
-            return state;
-    }
+export function ui(state = initialState.ui, action) {
+    return state;
 }
+
+// function reducer(state = initialState, action){
+//     switch (action.type){
+//         case AUTH_LOGIN:
+//             return {...state, auth: true};
+//         case AUTH_LOGOUT:
+//             return {...state, auth: false};
+//         case ADVERTS_LOADED:
+//             return {...state, adverts: action.payload.adverts};
+//         case ADVERTS_CREATED:
+//             return {...state, adverts: state.adverts.concat(action.payload.advert) };
+//         default:
+//             return state;
+//     }
+// }
 
 // export function auth(state = initialState.auth, action) {
 //     switch (action.type) {
@@ -50,5 +53,25 @@ function reducer(state = initialState, action){
 //         return state;
 //     }
 // }
+export function auth(state = initialState.auth, action){
+    switch (action.type) {
+        case AUTH_LOGIN:
+        return true;
+        case AUTH_LOGOUT:
+        return false;
+        default:
+        return state;
+    }
+}
+export function adverts(state = initialState.adverts, action){
+    switch (action.type){
+        case ADVERTS_LOADED:
+            return action.payload.adverts;
+        case ADVERTS_CREATED:
+            return [...state, action.payload.advert];
+        default:
+            return state;
+    }
+}
 
-export default reducer;
+//export default reducer;
