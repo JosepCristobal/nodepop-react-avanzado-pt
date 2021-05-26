@@ -15,6 +15,7 @@ import {
     ADVERTS_LOADED,
     ADVERTS_CREATED,
   } from './types';
+  import { login } from '../api/auth';
 
   export const authLoginRequest = () => {
     return {
@@ -34,6 +35,23 @@ import {
       payload: error,
       error: true,
     };
+  };
+
+  export const loginAction = (credentials, history, location) => {
+    return async function(dispatch, getState){
+      dispatch(authLoginRequest());
+      
+      try {
+        await login(credentials);
+        //isLogged.current = true;
+        dispatch(authLoginSucces());
+        const { from } = location.state || { from: { pathname: '/' } };
+        history.replace(from);
+      } catch (error) {
+        dispatch(authLoginFailure(error));
+      } 
+
+    }   
   };
 
   export const authLogout = () => {

@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import LoginForm from './LoginForm';
-import { login } from '../../../api/auth';
-import {authLoginRequest, authLoginSucces, authLoginFailure , resetError} from '../../../store/actions'
+//import { login } from '../../../api/auth';
+//import {authLoginRequest, authLoginSucces, authLoginFailure , resetError} from '../../../store/actions'
+import {loginAction , resetError} from '../../../store/actions'
 import { getUi } from '../../../store/selectors'
 import './LoginPage.css';
 import { useHistory, useLocation } from 'react-router';
@@ -37,18 +38,19 @@ function LoginPage() {
   });
 
   const handleSubmit = async credentials => {
-    // login(credentials).then(() => onLogin());
-    dispatch(authLoginRequest());
+    dispatch(loginAction(credentials, history, location))
+    // // login(credentials).then(() => onLogin());
+    // dispatch(authLoginRequest());
 
-    try {
-      await login(credentials);
-      //isLogged.current = true;
-      dispatch(authLoginSucces());
-      const { from } = location.state || { from: { pathname: '/' } };
-      history.replace(from);
-    } catch (error) {
-      dispatch(authLoginFailure(error));
-    } 
+    // try {
+    //   await login(credentials);
+    //   //isLogged.current = true;
+    //   dispatch(authLoginSucces());
+    //   const { from } = location.state || { from: { pathname: '/' } };
+    //   history.replace(from);
+    // } catch (error) {
+    //   dispatch(authLoginFailure(error));
+    // } 
   };
 
   return (

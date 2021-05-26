@@ -27,3 +27,8 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 19. Estamos en LoginPage.js para el tema de la autenticación.
 20. Completamos actions.js
 21. Vamos al boton de logout en AuthButton.js para añadir el mapDispatchToProps
+22. Solucionamos el login y los adverts con redux primera parte.
+23. Redux Thunk instalamos npm install redux-thunk
+24. Configuramos nuestro store para que acepte middleware. Importamos applyMiddleware from redux.
+25. LLevamos la lógica de nuestro componente a actions con un middleware.
+26. 1:42:26 del día 4
