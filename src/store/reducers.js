@@ -13,6 +13,7 @@ import {
     ADVERTS_DETAIL_SUCCESS,
     AUTH_LOGIN,
     ADVERTS_LOADED,
+    ADVERTS_CREATED,
   } from './types';
   
 export const initialState = {
@@ -32,6 +33,8 @@ function reducer(state = initialState, action){
             return {...state, auth: false};
         case ADVERTS_LOADED:
             return {...state, adverts: action.payload.adverts};
+        case ADVERTS_CREATED:
+            return {...state, adverts: state.adverts.concat(action.payload.advert) };
         default:
             return state;
     }

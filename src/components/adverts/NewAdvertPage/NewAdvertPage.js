@@ -6,16 +6,20 @@ import { createAdvertPhoto } from '../../../api/adverts';
 
 import './NewAdvertPage.css';
 import { Redirect } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { advertsCreated } from '../../../store/actions';
 
 const NewAdvertPage = props => {
   const [error, setError] = React.useState(null);
   const [createdAdvert, setCreatedAdvert] = React.useState(null);
+  const dispatch = useDispatch();
   
 
   const handleSubmit = async newAdvert => {
     try {
-       const advert = await createAdvertPhoto(newAdvert);
-      setCreatedAdvert(advert);
+        const advert = await createAdvertPhoto(newAdvert);
+        dispatch(advertsCreated(advert));
+        setCreatedAdvert(advert);
     } catch (error) {
       setError(true);
     }

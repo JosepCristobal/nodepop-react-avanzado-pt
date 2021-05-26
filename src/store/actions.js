@@ -13,6 +13,7 @@ import {
     UI_RESET_ERROR,
     ADVERTS_DETAIL_SUCCESS,
     ADVERTS_LOADED,
+    ADVERTS_CREATED,
   } from './types';
 
   export const authLogin = () => {
@@ -33,5 +34,17 @@ import {
       payload:{
         adverts,
       },
+    }
+  }
+
+  export const advertsCreated = advert => {
+    return{
+      type: ADVERTS_CREATED,
+      payload: {
+        advert: {
+          ... advert, 
+          user:{}, 
+          likes:[]}
+      }
     }
   }
