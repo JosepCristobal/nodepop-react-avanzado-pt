@@ -15,7 +15,8 @@ import {
     ADVERTS_LOADED,
     ADVERTS_CREATED,
   } from './types';
-  import { login } from '../api/auth';
+
+  // import { login } from '../api/auth';
 
   export const authLoginRequest = () => {
     return {
@@ -37,15 +38,15 @@ import {
     };
   };
 
-  export const loginAction = (credentials, history, location) => {
-    return async function(dispatch, getState){
+  export const loginAction = credentials => {
+    return async function(dispatch, getState, { api, history }){
       dispatch(authLoginRequest());
       
       try {
-        await login(credentials);
+        await api.auth.login(credentials);
         //isLogged.current = true;
         dispatch(authLoginSucces());
-        const { from } = location.state || { from: { pathname: '/' } };
+        const { from } = history.location.state || { from: { pathname: '/' } };
         history.replace(from);
       } catch (error) {
         dispatch(authLoginFailure(error));

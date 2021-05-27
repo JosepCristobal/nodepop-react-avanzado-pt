@@ -32,3 +32,5 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 24. Configuramos nuestro store para que acepte middleware. Importamos applyMiddleware from redux.
 25. LLevamos la lógica de nuestro componente a actions con un middleware.
 26. 1:42:26 del día 4
+27. Insytalamos npm install redux-logger
+28. thunk with extra arguments en index.js

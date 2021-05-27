@@ -6,7 +6,7 @@ import LoginForm from './LoginForm';
 import {loginAction , resetError} from '../../../store/actions'
 import { getUi } from '../../../store/selectors'
 import './LoginPage.css';
-import { useHistory, useLocation } from 'react-router';
+// import { useLocation } from 'react-router';
 
 function LoginPage() {
   // const [error, setError] = React.useState(null);
@@ -19,8 +19,8 @@ function LoginPage() {
   //const onLogin = () => dispatch(authLoginSucces());
 
   //const resetError = React.useCallback(() => setError(), []);
-  const history = useHistory();
-  const location = useLocation();
+  //const history = useHistory();
+  // const location = useLocation();
 
   // React.useEffect(() => {
   //    // onLogin();
@@ -38,7 +38,7 @@ function LoginPage() {
   });
 
   const handleSubmit = async credentials => {
-    dispatch(loginAction(credentials, history, location))
+    dispatch(loginAction(credentials))
     // // login(credentials).then(() => onLogin());
     // dispatch(authLoginRequest());
 
