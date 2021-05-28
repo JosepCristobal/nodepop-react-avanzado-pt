@@ -34,3 +34,8 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 26. 1:42:26 del día 4
 27. Insytalamos npm install redux-logger
 28. thunk with extra arguments en index.js
+29. Dia 5 10'.
+30. Aplicaremeos thunk en los adverts asincronía.
+31. Creamos los Types correspondientes a Adverts.
+32. Actions de Adverts.
+33. Thunk de Adverts en actions.js
