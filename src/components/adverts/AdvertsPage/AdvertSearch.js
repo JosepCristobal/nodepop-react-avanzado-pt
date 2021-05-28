@@ -5,6 +5,7 @@ import TagsAvailable from '../NewAdvertPage/TagsAvailable'
 import AdvertsList from './AdvertsList'
 import { Link } from 'react-router-dom';
 
+
 const AdvertSearch =({adverts})=>{
     const EmptyList = () => (
         <div style={{ textAlign: 'center' }}>

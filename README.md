@@ -32,7 +32,7 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 24. Configuramos nuestro store para que acepte middleware. Importamos applyMiddleware from redux.
 25. LLevamos la lógica de nuestro componente a actions con un middleware.
 26. 1:42:26 del día 4
-27. Insytalamos npm install redux-logger
+27. Instalamos npm install redux-logger
 28. thunk with extra arguments en index.js
 29. Dia 5 10'.
 30. Aplicaremeos thunk en los adverts asincronía.
@@ -41,3 +41,6 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 33. Thunk de Adverts en actions.js advertsLoadAction 
 34. Vamos a trbajar en el reducer.
 35. Modificamos componente en AdvertsPage.js
+36. En selector creamos getAdvertsLoaded para saber cuantos anuncios hemos cargado.
+37. Empezaremos a gestionar los tags en el selector, ahora crearemos los types, actions y reducers.
+38. Tags a redux thunk TagsAvailable

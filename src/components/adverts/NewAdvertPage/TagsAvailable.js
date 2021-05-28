@@ -1,11 +1,18 @@
 import React from 'react';
+import {useDispatch, useSelector} from 'react-redux'
 import {getTagsAdverts} from '../../../api/tags'
 
-const TagsAvailable = ({labels,...props}) =>{  
-    const [tagsAvailable, setTagsAvailable] = React.useState([]);
+import { tagsLoadAction} from '../../../store/actions';
 
+import { getTags } from '../../../store/selectors';
+
+const TagsAvailable = ({labels,...props}) =>{  
+    //const [tagsAvailable, setTagsAvailable] = React.useState([]);
+    const dispatch = useDispatch();
+    const tagsAvailable = useSelector(getTags)
     React.useEffect(() => {
-         getTagsAdverts().then(setTagsAvailable);
+        dispatch(tagsLoadAction());
+        //getTagsAdverts().then(setTagsAvailable);
     }, []);
 
     const Data = tagsAvailable,

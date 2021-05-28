@@ -14,10 +14,12 @@ import {
   ADVERTS_DETAIL_SUCCESS,
   //ADVERTS_LOADED,
   ADVERTS_CREATED,
+  TAGS_LOADED_REQUEST,
+  TAGS_LOADED_SUCCESS,
+  TAGS_LOADED_FAILURE,
 } from './types';
 
-// import { login } from '../api/auth';
-
+//Login
 export const authLoginRequest = () => {
   return {
     type: AUTH_LOGIN_REQUEST,
@@ -38,6 +40,7 @@ export const authLoginFailure = (error) => {
   };
 };
 
+//thunk login
 export const loginAction = credentials => {
   return async function(dispatch, getState, { api, history }){
     dispatch(authLoginRequest());
@@ -55,12 +58,14 @@ export const loginAction = credentials => {
   }   
 };
 
+// Logout
 export const authLogout = () => {
   return {
     type: AUTH_LOGOUT,
   };
 };
 
+//Adverts
 export const advertsLoadedRequest = () =>{
   return {
     type: ADVERTS_LOADED_REQUEST,
@@ -96,8 +101,41 @@ export const advertsLoadAction = () =>{
   }
 }
 
+//TAGS
+export const tagsLoadedRequest = () =>{
+  return {
+    type: TAGS_LOADED_REQUEST,
+  };
+};
 
+export const tagsLoadedSuccess = tags => {
+  return{
+    type: TAGS_LOADED_SUCCESS,
+    payload: tags,
+  }
+}
 
+export const tagsLoadedFailure = error => {
+  return {
+    type: TAGS_LOADED_FAILURE,
+    payload: error,
+    error: true,
+  };
+};
+
+//Creamos en thunk de tags
+export const tagsLoadAction = () =>{
+  return async function (dispatch,getState, { api }){
+    dispatch(tagsLoadedRequest())
+    try {
+      const tags = await api.tags.getTagsAdverts()
+      dispatch(tagsLoadedSuccess(tags))
+
+    } catch (error) {
+      dispatch(tagsLoadedFailure(error))
+    }
+  }
+}
 
 
 
