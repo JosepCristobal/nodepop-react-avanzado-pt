@@ -38,4 +38,6 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 30. Aplicaremeos thunk en los adverts asincronía.
 31. Creamos los Types correspondientes a Adverts.
 32. Actions de Adverts.
-33. Thunk de Adverts en actions.js
+33. Thunk de Adverts en actions.js advertsLoadAction 
+34. Vamos a trbajar en el reducer.
+35. Modificamos componente en AdvertsPage.js

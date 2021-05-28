@@ -1,12 +1,13 @@
 import React from 'react';
-import { getLatestAdverts } from '../../../api/adverts';
+//import { getLatestAdverts } from '../../../api/adverts';
 //import scopedStyles from './TweetsPage.module.css';
 import {useDispatch, useSelector} from 'react-redux'
 import Layout from '../../layout/Layout';
 import './AdvertsPage.css';
 import AdvertSearch from './AdvertSearch';
 import { getAdverts } from '../../../store/selectors';
-import { advertsLoaded } from '../../../store/actions';
+//import { advertsLoaded } from '../../../store/actions';
+import { advertsLoadAction} from '../../../store/actions';
 
 // const EmptyList = () => (
 //   <div style={{ textAlign: 'center' }}>
@@ -22,7 +23,8 @@ const AdvertsPage = ({ className, ...props }) => {
   const dispatch = useDispatch();
   const adverts = useSelector(getAdverts)
   React.useEffect(() => {
-    getLatestAdverts().then(adverts => dispatch(advertsLoaded(adverts)));
+    //getLatestAdverts().then(adverts => dispatch(advertsLoaded(adverts)));
+    dispatch(advertsLoadAction());
   }, []);
  //Filtrado de anuncios
   return (

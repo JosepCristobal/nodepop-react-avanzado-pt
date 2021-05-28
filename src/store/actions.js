@@ -63,7 +63,7 @@ export const authLogout = () => {
 
 export const advertsLoadedRequest = () =>{
   return {
-    type: ADVERTS_LOADED_SUCCESS,
+    type: ADVERTS_LOADED_REQUEST,
   };
 };
 
@@ -81,6 +81,26 @@ export const advertsLoadedFailure = error => {
     error: true,
   };
 };
+
+//Creamos en thunk de adverts
+export const advertsLoadAction = () =>{
+  return async function (dispatch,getState, { api }){
+    dispatch(advertsLoadedRequest())
+    try {
+      const adverts = await api.adverts.getLatestAdverts()
+      dispatch(advertsLoadedSuccess(adverts))
+
+    } catch (error) {
+      dispatch(advertsLoadedFailure(error))
+    }
+  }
+}
+
+
+
+
+
+
 
 export const advertsCreated = advert => {
   return{
