@@ -27,7 +27,7 @@ export const authLoginRequest = () => {
   };
 };
 
-export const authLoginSucces  = () => {
+export const authLoginSuccess  = () => {
   return {
     type: AUTH_LOGIN_SUCCESS,
   };
@@ -49,7 +49,7 @@ export const loginAction = credentials => {
     try {
       await api.auth.login(credentials);
       //isLogged.current = true;
-      dispatch(authLoginSucces());
+      dispatch(authLoginSuccess());
       const { from } = history.location.state || { from: { pathname: '/' } };
       history.replace(from);
     } catch (error) {
@@ -160,6 +160,54 @@ export const advertsCreated = advert => {
       },
   }
 }
+
+//Create advert
+export const advertCreatedRequest = () => {
+  return {
+    type: ADVERTS_CREATED_REQUEST,
+  };
+};
+
+export const advertCreatedSuccess  = (advert) => {
+  return {
+    type: ADVERTS_CREATED_SUCCESS,
+    payload: advert,
+  };
+};
+
+export const advertCreatedFailure = (error) => {
+  return {
+    type: ADVERTS_CREATED_FAILURE,
+    payload: error,
+    error: true,
+  };
+};
+
+//Creamos en thunk de nuevo anuncio
+export const advertCreatedAction = (advert) =>{
+  return async function (dispatch, getState, { api, history }){
+    //const tagsLoaded = getTagsLoaded(getState())
+    //Si los tags se han cargado una vez, no los volvemos a cargar, los recuperamos de redux
+    //console.log('Los tags cargados son:', tagsLoaded)
+    // if (tagsLoaded>0) {
+    //   return};
+    dispatch(advertCreatedRequest())
+    try {
+      const advertCreated = await api.adverts.createAdvertPhoto(advert)
+      dispatch(advertCreatedSuccess(advertCreated));
+      history.push(`/adverts/${advertCreated .id}`)
+      return advertCreated;
+
+    } catch (error) {
+      dispatch(advertCreatedFailure(error))
+      history.push("/login")
+    }
+  }
+}
+
+
+
+
 
 export const resetError = () => {
   return {

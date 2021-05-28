@@ -46,7 +46,7 @@ export function adverts(state = initialState.adverts, action){
     switch (action.type){
         case ADVERTS_LOADED_SUCCESS:
             return action.payload;
-        case ADVERTS_CREATED:
+        case ADVERTS_CREATED_SUCCESS:
             return [...state, action.payload];
         default:
             return state;
@@ -61,10 +61,12 @@ export function ui(state = initialState.ui, action) {
         case AUTH_LOGIN_REQUEST:
         case ADVERTS_LOADED_REQUEST:
         case TAGS_LOADED_REQUEST:
+        case ADVERTS_CREATED_REQUEST:
             return { ...state,loading: true};
         case AUTH_LOGIN_SUCCESS:
         case ADVERTS_LOADED_SUCCESS:
         case TAGS_LOADED_SUCCESS:
+        case ADVERTS_CREATED_SUCCESS:
             return { ...state,loading: false};
         case UI_RESET_ERROR:
             return { ...state, error: null,};

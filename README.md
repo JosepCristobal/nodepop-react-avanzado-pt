@@ -43,4 +43,11 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 35. Modificamos componente en AdvertsPage.js
 36. En selector creamos getAdvertsLoaded para saber cuantos anuncios hemos cargado.
 37. Empezaremos a gestionar los tags en el selector, ahora crearemos los types, actions y reducers.
-38. Tags a redux thunk TagsAvailable funcionando
+38. Tags a redux thunk TagsAvailable funcionando.
+39. Tags solo se cargan una vez. Solo en la primera carga.
+40. Vamos a por los nuevos Anuncios NewAdvert.
+41. En types creamos ADVERTS_CREATED_REQUEST ...SUCCESS ...FAILURE
+42. Creamos las actions y el thunk advertCreatedAction.
+43. Cremos en reducers en la sección de ui y en la de adverts.
+44. vamos al componente.
+45. Creamos nuevo anuncio con thunk.
