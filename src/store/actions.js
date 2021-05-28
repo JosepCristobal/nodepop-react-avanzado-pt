@@ -1,3 +1,4 @@
+import { getAdvertsLoaded , getTagsLoaded} from './selectors';
 import {
   AUTH_LOGIN,
   AUTH_LOGIN_REQUEST,
@@ -90,6 +91,12 @@ export const advertsLoadedFailure = error => {
 //Creamos en thunk de adverts
 export const advertsLoadAction = () =>{
   return async function (dispatch,getState, { api }){
+    //const advertsLoaded = getAdvertsLoaded(getState())
+    // Podríamos llamar al getState para saber si se han cargado los anuncios o no
+    // y evitar volver a llamar al API para volver a cargar los anuncios.
+    // En este caso he preferido hacer la llamada al API para cargar todos los anuncios nuevos
+    // que hayan podido generar otros usuarios.
+    
     dispatch(advertsLoadedRequest())
     try {
       const adverts = await api.adverts.getLatestAdverts()
@@ -126,6 +133,11 @@ export const tagsLoadedFailure = error => {
 //Creamos en thunk de tags
 export const tagsLoadAction = () =>{
   return async function (dispatch,getState, { api }){
+    const tagsLoaded = getTagsLoaded(getState())
+    //Si los tags se han cargado una vez, no los volvemos a cargar, los recuperamos de redux
+    //console.log('Los tags cargados son:', tagsLoaded)
+    if (tagsLoaded>0) {
+      return};
     dispatch(tagsLoadedRequest())
     try {
       const tags = await api.tags.getTagsAdverts()

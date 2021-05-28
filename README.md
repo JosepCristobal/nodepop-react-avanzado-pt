@@ -43,4 +43,4 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 35. Modificamos componente en AdvertsPage.js
 36. En selector creamos getAdvertsLoaded para saber cuantos anuncios hemos cargado.
 37. Empezaremos a gestionar los tags en el selector, ahora crearemos los types, actions y reducers.
-38. Tags a redux thunk TagsAvailable
+38. Tags a redux thunk TagsAvailable funcionando
