@@ -28,6 +28,7 @@ export const initialState = {
         loading: false,
         error: null,
     },
+    advert:{}
 };
 
 
@@ -67,6 +68,7 @@ export function ui(state = initialState.ui, action) {
         case ADVERTS_LOADED_SUCCESS:
         case TAGS_LOADED_SUCCESS:
         case ADVERTS_CREATED_SUCCESS:
+        case ADVERTS_DETAIL_SUCCESS:
             return { ...state,loading: false};
         case UI_RESET_ERROR:
             return { ...state, error: null,};
@@ -82,6 +84,18 @@ export function tags(state = initialState.tags, action){
     switch (action.type){
         case TAGS_LOADED_SUCCESS:
             return action.payload;
+        default:
+            return state;
+    };
+}
+
+export function advert (state = initialState.advert, action){
+    if (action.error){
+        return { ...state,loading: false,error: action.payload};
+    }
+    switch (action.type){
+        case ADVERTS_DETAIL_SUCCESS:
+            return [action.payload];
         default:
             return state;
     };

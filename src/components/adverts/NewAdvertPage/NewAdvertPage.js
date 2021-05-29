@@ -11,14 +11,15 @@ import { advertCreatedAction } from '../../../store/actions';
 
 const NewAdvertPage = props => {
   //const [error, setError] = React.useState(null);
-  const [createdAdvert, setCreatedAdvert] = React.useState(null);
+  //const [createdAdvert, setCreatedAdvert] = React.useState(null);
   const dispatch = useDispatch();
+  
   const { error } = useSelector(getUi);
   
 
   const handleSubmit = async newAdvert => {
     const advert = await dispatch(advertCreatedAction(newAdvert));
-    setCreatedAdvert(advert);
+    //setCreatedAdvert(advert);
     //try {
         //const advert = await createAdvertPhoto(newAdvert);
         //dispatch(advertsCreated(advert));

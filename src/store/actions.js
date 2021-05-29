@@ -1,4 +1,4 @@
-import { getAdvertsLoaded , getTagsLoaded} from './selectors';
+import { getAdvertsLoaded , getTagsLoaded, getAdvertDetailSelector} from './selectors';
 import {
   AUTH_LOGIN,
   AUTH_LOGIN_REQUEST,
@@ -13,6 +13,7 @@ import {
   ADVERTS_CREATED_FAILURE,
   UI_RESET_ERROR,
   ADVERTS_DETAIL_SUCCESS,
+  ADVERTS_DETAIL_FAILURE,
   //ADVERTS_LOADED,
   ADVERTS_CREATED,
   TAGS_LOADED_REQUEST,
@@ -137,8 +138,10 @@ export const tagsLoadAction = () =>{
     //Si los tags se han cargado una vez, no los volvemos a cargar, los recuperamos de redux
     //console.log('Los tags cargados son:', tagsLoaded)
     if (tagsLoaded>0) {
+      
       return};
-    dispatch(tagsLoadedRequest())
+    
+      dispatch(tagsLoadedRequest())
     try {
       const tags = await api.tags.getTagsAdverts()
       dispatch(tagsLoadedSuccess(tags))
@@ -195,7 +198,7 @@ export const advertCreatedAction = (advert) =>{
     try {
       const advertCreated = await api.adverts.createAdvertPhoto(advert)
       dispatch(advertCreatedSuccess(advertCreated));
-      history.push(`/adverts/${advertCreated .id}`)
+      history.push(`/adverts/${advertCreated.id}`)
       return advertCreated;
 
     } catch (error) {
@@ -205,9 +208,37 @@ export const advertCreatedAction = (advert) =>{
   }
 }
 
+//Detai Adverts
+export const advertsDeatilSuccess = advert => {
+  return {
+    type: ADVERTS_DETAIL_SUCCESS,
+    payload: advert,
+  };
+};
+export const advertsDetailFailure = (error) =>{
+  return {
+    type: ADVERTS_DETAIL_FAILURE,
+    payload: error,
+    error: true,
+  };
+}
 
-
-
+export const advertsDetailAction = (advertId) => {
+  return async function (dispatch, getState, {api, history}){
+    // const advertLoaded = getAdvertDetailSelector(getState(),advertId)
+    // console.log('Llegamos a advertsDetailAction Sin acceso al api ', advertId)
+    // dispatch(advertsDeatilSuccess(advertLoaded));
+    // if (advertLoaded){
+    //   return;
+    // }
+    try {
+      const advert = await api.adverts.getAdvertDetail(advertId)
+      dispatch(advertsDeatilSuccess(advert));
+    } catch (error) {
+      dispatch (advertsDetailFailure(error))
+    } 
+  }
+}
 
 export const resetError = () => {
   return {

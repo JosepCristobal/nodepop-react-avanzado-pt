@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import T from 'prop-types';
+//import T from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import { LoginPage, PrivateRoute } from './components/auth';
 import { AdvertsPage, NewAdvertPage, AdvertDetailPage } from './components/adverts';
@@ -9,7 +9,7 @@ import  { Redirect } from 'react-router-dom'
 // function App({ isInitiallyLogged }) {
   function App() {
   //const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
-  const ref = React.useRef(null);
+  //const ref = React.useRef(null);
 
   return (
     <div className="App">
@@ -19,7 +19,8 @@ import  { Redirect } from 'react-router-dom'
             <LoginPage />
           </Route>
           <PrivateRoute path="/adverts/:advertId">
-            {routeProps => <AdvertDetailPage ref={ref} {...routeProps} />}
+            {routeProps => <AdvertDetailPage {...routeProps} />}
+            {/* {routeProps => <AdvertDetailPage ref={ref} {...routeProps} />} */}
           </PrivateRoute>
           <PrivateRoute path="/advert">
             <NewAdvertPage />

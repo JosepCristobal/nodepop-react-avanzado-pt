@@ -51,3 +51,10 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 43. Cremos en reducers en la sección de ui y en la de adverts.
 44. vamos al componente.
 45. Creamos nuevo anuncio con thunk.
+46. Dia 5 2:05 Nos queda pendiente el detail.
+47. Ahora abordamos el detalle de nuestros anuncios. En selectors getAdvertDetail.
+48. Una vez creado el selector getTweetDetail vamos a nuestro componente para adaptarlo.
+49. En dia 5 2:35:00 el detail está hecho con clases no con hook por lo que él utiliza connect . Lo intentaré hacer con hooks.
+50. En types creamos ADVERTS_DETAIL_SUCCESS.
+51. En actions creamos advertsDetailSuccess advertsDetailAction.
+52. Completamos reducers 

@@ -11,3 +11,6 @@ export const getUi = state => state.ui;
 
 export const getTags = state => state.tags;
 export const getTagsLoaded = state => state.tags.length;
+
+//export const getAdvertDetailSelector = (state, advertId) => state.adverts.find(advert0 => advert0.id === advertId);
+export const getAdvertDetailSelector = state => state.advert;
