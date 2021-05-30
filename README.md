@@ -85,4 +85,7 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 '@wojtekmaj/enzyme-adapter-react-17'; 
 72. Al final lo he instalado añadiendo al final --legacy-peer-deps para que no tenga en cuenta las versiones.
 73. AdvertDetailPage, exportamos la función para poder hacer un buen test.
+74. Pasamos al snapshot de testing. Instalamos enzyme-to-json.
+75. npm install --save-dev enzyme-to-json
+76. Añadimos a nuestro package.json una nueva configuración de "jest:{snapshotSerializers :["enzime-to-json/serializer"]}
 
