@@ -75,4 +75,5 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 62. Empezamos con los reducers y creamos reducers.test.js
 63. Testeamos ADVERTS_LOADED_SUCCESS, ADVERTS_DETAIL_SUCCESS
 64. Empezamos con los selectores. selectors.test.js
-65. 
+65. He conseguido hacer funcionar watchman. configuración y activar permiso den documentos.
+66. yarn test -- --watchAll --coverage nos crea un folder en nuestro proyecto y posemos visualizar de forma gráfica el alcance de nuestros tests.

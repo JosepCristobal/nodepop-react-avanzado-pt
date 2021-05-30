@@ -10,7 +10,7 @@ describe ('authLoginRequest', () => {
     test('Should return an AUTH_LOGIN_REQUEST action', () =>{
         const result = authLoginRequest();
         expect(result.type).toBe(AUTH_LOGIN_REQUEST);
-        expect(resul).toMatchObject({ type: AUTH_LOGIN_REQUEST });
+        expect(result).toMatchObject({ type: AUTH_LOGIN_REQUEST });
         //Sería el más exacto
         expect(result).toEqual({ type: AUTH_LOGIN_REQUEST });
     });

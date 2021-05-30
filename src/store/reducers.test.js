@@ -24,7 +24,7 @@ describe('adverts', () => {
   test('should manage ADVERTS_DETAIL_SUCCESS action', () => {
     const state = initialState.adverts;
     const advert = {};
-    const action = { type: ADVERTS_DETAIL_SUCCESS, payload: tweet };
+    const action = { type: ADVERTS_DETAIL_SUCCESS, payload: advert };
     const expectedState = {
       ...initialState.adverts,...initialState.adverts, advert,
     };
