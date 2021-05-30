@@ -61,4 +61,18 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 53. Funcionando. Pero cuando ponemos la url directamente en el navegador con el id del anuncio, no funciona. Si lo hacemos por la aplicación, todo funciona correctamente.
 53. Vamos a por el borrado del anuncio, con el procedimiento habitual. Redux thunk.
 54. Completado el borrado. Repasamos todo el código a borrar.
-55.
+55. Empezamos con los tests unitarios.
+56. Creamos action.test.js.
+57. Tenemos problemas para la puesta en marcha , tenemos el siguiente error:
+            watchmanResponse: {
+            error: 'resolve_projpath: path `/Users/jcm/Documents/BootCampWeb/11-React_Avanzado/React_Avanzado_PT/nodepop-react-avanzado/src`: open: /Users/jcm/Documents/BootCampWeb/11-React_Avanzado/React_Avanzado_PT/nodepop-react-avanzado/src: Operation not permitted',
+             version: '4.9.0'
+  }
+58. Continuamos con los test e intentaremos solucionar el problema al final.
+59. Test acción síncrona authLoginRequest y advertsLoadedSuccess.
+60. Test acción asíncrona loginAction.
+61. Otra alternativa coon redux mock store npm install redux-mock-store --save-dev.
+62. Empezamos con los reducers y creamos reducers.test.js
+63. Testeamos ADVERTS_LOADED_SUCCESS, ADVERTS_DETAIL_SUCCESS
+64. Empezamos con los selectores. selectors.test.js
+65. 
