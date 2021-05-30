@@ -1,6 +1,5 @@
-import { getAdvertsLoaded , getTagsLoaded, getAdvertDetailSelector} from './selectors';
+import { getTagsLoaded, getAdvertDetailSelector} from './selectors';
 import {
-  AUTH_LOGIN,
   AUTH_LOGIN_REQUEST,
   AUTH_LOGIN_SUCCESS,
   AUTH_LOGIN_FAILURE,
@@ -14,7 +13,6 @@ import {
   UI_RESET_ERROR,
   ADVERTS_DETAIL_SUCCESS,
   ADVERTS_DETAIL_FAILURE,
-  //ADVERTS_LOADED,
   ADVERTS_CREATED,
   TAGS_LOADED_REQUEST,
   TAGS_LOADED_SUCCESS,
@@ -154,14 +152,11 @@ export const tagsLoadAction = () =>{
   }
 }
 
-
-
-
 export const advertsCreated = advert => {
   return{
     type: ADVERTS_CREATED,
     payload: {
-        ... advert
+        ...advert
       },
   }
 }
@@ -228,7 +223,7 @@ export const advertDeledAction = (advertId) =>{
     try {
       const advertDel = await api.adverts.deleteAdvert(advertId);
       dispatch(advertDeletedSuccess(advertDel));
-      history.push(`/adverts/`)
+      history.push(`/adverts`)
       return advertDel;
 
     } catch (error) {
@@ -237,8 +232,6 @@ export const advertDeledAction = (advertId) =>{
     }
   }
 }
-
-
 
 
 //Detai Adverts
@@ -269,8 +262,8 @@ export const advertsDetailAction = (advertId) => {
       return advert
     } catch (error) {
       dispatch (advertsDetailFailure(error))
-    } 
-  }
+    } ;
+  };
 }
 
 export const resetError = () => {

@@ -33,7 +33,7 @@ const filterByPrice = (advert,filterSearch) =>{
     const max = filterSearch.priceEnd
     if (min===0 && max===0) return true;
     if (max>=min) {
-        console.log('Precio', advert.price)
+        //console.log('Precio', advert.price)
         return advert.price>=min && advert.price<=max
     };
 

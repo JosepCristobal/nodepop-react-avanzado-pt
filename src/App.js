@@ -1,16 +1,11 @@
 import React from 'react';
 import './App.css';
-//import T from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import { LoginPage, PrivateRoute } from './components/auth';
 import { AdvertsPage, NewAdvertPage, AdvertDetailPage } from './components/adverts';
 import  { Redirect } from 'react-router-dom'
 
-// function App({ isInitiallyLogged }) {
-  function App() {
-  //const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
-  //const ref = React.useRef(null);
-
+function App() {
   return (
     <div className="App">
        
@@ -49,6 +44,5 @@ import  { Redirect } from 'react-router-dom'
     </div>
   );
 }
-
 
 export default App;

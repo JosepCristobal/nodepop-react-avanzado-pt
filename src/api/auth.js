@@ -12,8 +12,7 @@ export const login = (credentials) => {
       storage.set('auth', accessToken);
     }else{
       storage.remove('auth');
-    }
-    
+    } 
 
   });
 };

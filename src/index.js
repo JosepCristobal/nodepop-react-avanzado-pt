@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+//import { BrowserRouter as Router } from 'react-router-dom';
 import Root from './Root';
 import './index.css';
 import configureStore from './store';
-import App from './App';
+//import App from './App';
 
 import { createBrowserHistory } from 'history';
 import storage from './utils/storage';
@@ -22,9 +22,6 @@ const store = configureStore({
 
 const render = ()=> {
   ReactDOM.render(
-    // <Router>
-      // <App isInitiallyLogged={!!accessToken}/>
-    // </Router>,
     <Root store={store} history={history} />,
     document.getElementById('root')
   );
