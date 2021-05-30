@@ -77,3 +77,12 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 64. Empezamos con los selectores. selectors.test.js
 65. He conseguido hacer funcionar watchman. configuración y activar permiso den documentos.
 66. yarn test -- --watchAll --coverage nos crea un folder en nuestro proyecto y posemos visualizar de forma gráfica el alcance de nuestros tests.
+67. Pasamos a test de componentes.
+68. Vamos a utilizar enzyme como librería de utilidades para renderizar nuestro componentes. npm install -save-dev enzyme
+69. También instalamos una librería de adaptador de react-16 npm i --save-dev enzyme-adapter-react-16. Hemos tenido problemas con las dependencias, no creo que funcione correctamente
+70. Componente con snapshot testing, utilizaremos enzyme. Creamos LoginForm.test.js
+71. No puedo hacer el test, no consigo instalar esta versión de Enzyme en mi máquina. he encontrado una versión no oficial, pero prefiero no instalarla.
+'@wojtekmaj/enzyme-adapter-react-17'; 
+72. Al final lo he instalado añadiendo al final --legacy-peer-deps para que no tenga en cuenta las versiones.
+73. AdvertDetailPage, exportamos la función para poder hacer un buen test.
+

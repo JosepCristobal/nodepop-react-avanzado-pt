@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAdvertDetailSelector, getUi} from '../../../store/selectors'
 import defaultPhoto from '../../../assets/2574831-200.png'
 
-const AdvertDetailPage = ({ className, ...props }) =>{
+export const AdvertDetailPage = ({ className, ...props }) =>{
   const { match } = props;
   const dispatch = useDispatch();
  
