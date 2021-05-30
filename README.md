@@ -130,6 +130,25 @@ mockeando la acción.
 75. npm install --save-dev enzyme-to-json
 76. Añadimos a nuestro package.json una nueva configuración de "jest:{snapshotSerializers :["enzime-to-json/serializer"]}
 77. Pequeños ajustes en nuestro proyecto en la parte de test.
+78. En los tests, tenemos un pequeño desajuste  que no hay forma de solventar. No nos reconoce .sort como una función.
+
+
+ 		TypeError: state.adverts.sort is not a function
+
+     	2 |
+      	3 | export const getAdverts = state => 
+    	> 4 |     state.adverts.sort((t1, t2) =>{
+        |                   ^
+      	5 |         if(t1.updatedAt < t2.updatedAt) return 1;
+      	6 |         return -1;
+      	7 |     });
+
+      	at getAdverts (src/store/selectors.js:4:19)
+      	at Object.<anonymous> (src/store/selectors.test.js:10:22)     
+      	
+    
+79. Pasamos a la entrega de la práctica porque se acerca la hora máxima y no damos con la solución.
+
 
 ## Conclusiones finales
 
