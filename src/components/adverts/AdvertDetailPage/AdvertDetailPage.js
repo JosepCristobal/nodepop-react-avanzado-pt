@@ -5,35 +5,41 @@ import Photo from '../../shared/Photo';
 import { deleteAdvert } from '../../../api/adverts';
 import { Redirect, useHistory } from 'react-router';
 import { Button  } from '../../shared';
-import { advertsDetailAction } from '../../../store/actions';
+import { advertsDetailAction, advertDeledAction } from '../../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAdvertDetailSelector} from '../../../store/selectors'
+import { getAdvertDetailSelector, getUi} from '../../../store/selectors'
 import defaultPhoto from '../../../assets/2574831-200.png'
 
 const AdvertDetailPage = ({ className, ...props }) =>{
   const { match } = props;
   const dispatch = useDispatch();
-  const ad = useSelector(getAdvertDetailSelector)[0];
+ 
   const advertId = match.params.advertId
-
+  console.log('props',props)
+  const ad = useSelector(getAdvertDetailSelector(advertId));
   React.useEffect(()=>{
     dispatch(advertsDetailAction(advertId)); 
   },[]);
 
-const history = useHistory();
+
+  const { error } = useSelector(getUi);
+  const history = useHistory();
 const handlerDelete = async (idAdvert) =>{
   alert(`Va a borrar el registro núm. ${idAdvert}`)
   try {
-    const advertDel = await deleteAdvert(idAdvert);
-    console.log (advertDel)
+    const advertDel = await dispatch(advertDeledAction(idAdvert))
+    //const advertDel = await deleteAdvert(idAdvert);
+    console.log ('En delete AdvertDel', advertDel)
   } catch (error) {
     console.log(error)
   }
-  history.push("/");
+  //history.push("/");
 }
 
 const baseUrlPhoto =`${process.env.REACT_APP_API_BASE_URL}`;
 
+//No funciona correctamente, deberemos tratarlo con calma
+//TODO
 if (ad.error && ad.error.status === 404) {
     return <Redirect to="/404" />;
 };

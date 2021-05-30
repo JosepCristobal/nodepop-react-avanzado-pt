@@ -57,4 +57,6 @@ En base a la práctica anterior de React Fundamentos, deberemos implementar REDU
 49. En dia 5 2:35:00 el detail está hecho con clases no con hook por lo que él utiliza connect . Lo intentaré hacer con hooks.
 50. En types creamos ADVERTS_DETAIL_SUCCESS.
 51. En actions creamos advertsDetailSuccess advertsDetailAction.
-52. Completamos reducers 
+52. Completamos reducers.
+53. Funcionando. Pero cuando ponemos la url directamente en el navegador con el id del anuncio, no funciona. Si lo hacemos por la aplicación, todo funciona correctamente.
+53. Vamos a por el borrado del anuncio, con el procedimiento habitual.

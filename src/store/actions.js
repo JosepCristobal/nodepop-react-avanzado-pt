@@ -19,6 +19,8 @@ import {
   TAGS_LOADED_REQUEST,
   TAGS_LOADED_SUCCESS,
   TAGS_LOADED_FAILURE,
+  ADVERT_DELETE_SUCCESS,
+  ADVERT_DELETE_FAILURE,
 } from './types';
 
 //Login
@@ -141,7 +143,7 @@ export const tagsLoadAction = () =>{
       
       return};
     
-      dispatch(tagsLoadedRequest())
+    dispatch(tagsLoadedRequest())
     try {
       const tags = await api.tags.getTagsAdverts()
       dispatch(tagsLoadedSuccess(tags))
@@ -189,11 +191,6 @@ export const advertCreatedFailure = (error) => {
 //Creamos en thunk de nuevo anuncio
 export const advertCreatedAction = (advert) =>{
   return async function (dispatch, getState, { api, history }){
-    //const tagsLoaded = getTagsLoaded(getState())
-    //Si los tags se han cargado una vez, no los volvemos a cargar, los recuperamos de redux
-    //console.log('Los tags cargados son:', tagsLoaded)
-    // if (tagsLoaded>0) {
-    //   return};
     dispatch(advertCreatedRequest())
     try {
       const advertCreated = await api.adverts.createAdvertPhoto(advert)
@@ -207,6 +204,42 @@ export const advertCreatedAction = (advert) =>{
     }
   }
 }
+
+//Delete Advert
+
+export const advertDeletedSuccess  = (advertId) => {
+  return {
+    type: ADVERT_DELETE_SUCCESS,
+    payload: true,
+  };
+};
+
+export const advertDeletedFailure  = (error) => {
+  return {
+    type: ADVERT_DELETE_FAILURE,
+    payload: error,
+    error: true,
+  };
+};
+
+//Creamos en thunk del borrado del anuncio anuncio
+export const advertDeledAction = (advertId) =>{
+  return async function (dispatch, getState, { api, history }){
+    try {
+      const advertDel = await api.adverts.deleteAdvert(advertId);
+      dispatch(advertDeletedSuccess(advertDel));
+      history.push(`/adverts/`)
+      return advertDel;
+
+    } catch (error) {
+      dispatch(advertDeletedFailure(error))
+      history.push("/login")
+    }
+  }
+}
+
+
+
 
 //Detai Adverts
 export const advertsDeatilSuccess = advert => {
@@ -225,15 +258,15 @@ export const advertsDetailFailure = (error) =>{
 
 export const advertsDetailAction = (advertId) => {
   return async function (dispatch, getState, {api, history}){
-    // const advertLoaded = getAdvertDetailSelector(getState(),advertId)
-    // console.log('Llegamos a advertsDetailAction Sin acceso al api ', advertId)
-    // dispatch(advertsDeatilSuccess(advertLoaded));
-    // if (advertLoaded){
-    //   return;
-    // }
+    const advertLoaded = getAdvertDetailSelector(advertId)(getState())
+    //console.log('Llegamos a advertsDetailAction Sin acceso al api ', advertLoaded)
+    if (advertLoaded){
+      return;
+    }
     try {
       const advert = await api.adverts.getAdvertDetail(advertId)
       dispatch(advertsDeatilSuccess(advert));
+      return advert
     } catch (error) {
       dispatch (advertsDetailFailure(error))
     } 

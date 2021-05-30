@@ -18,6 +18,8 @@ import {
     ADVERTS_CREATED,
     TAGS_LOADED_REQUEST,
     TAGS_LOADED_SUCCESS,
+    ADVERT_DELETE_SUCCESS,
+    
   } from './types';
   
 export const initialState = {
@@ -28,7 +30,7 @@ export const initialState = {
         loading: false,
         error: null,
     },
-    advert:{}
+    advertDel:true,
 };
 
 
@@ -89,14 +91,27 @@ export function tags(state = initialState.tags, action){
     };
 }
 
-export function advert (state = initialState.advert, action){
+export function advertDel(state = initialState.advertDel, action){
     if (action.error){
-        return { ...state,loading: false,error: action.payload};
-    }
+            return { ...state,loading: false,error: action.payload};
+        }
+    
     switch (action.type){
-        case ADVERTS_DETAIL_SUCCESS:
-            return [action.payload];
+        case ADVERT_DELETE_SUCCESS:
+            return true;
         default:
             return state;
-    };
+    }
 }
+
+// export function advert (state = initialState.advert, action){
+//     if (action.error){
+//         return { ...state,loading: false,error: action.payload};
+//     }
+//     switch (action.type){
+//         case ADVERTS_DETAIL_SUCCESS:
+//             return [action.payload];
+//         default:
+//             return state;
+//     };
+// }
