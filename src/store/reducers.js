@@ -30,7 +30,7 @@ export const initialState = {
         loading: false,
         error: null,
     },
-    advertDel:true,
+    advertDel:{},
 };
 
 
@@ -98,20 +98,8 @@ export function advertDel(state = initialState.advertDel, action){
     
     switch (action.type){
         case ADVERT_DELETE_SUCCESS:
-            return true;
+            return action.payload;
         default:
             return state;
     }
 }
-
-// export function advert (state = initialState.advert, action){
-//     if (action.error){
-//         return { ...state,loading: false,error: action.payload};
-//     }
-//     switch (action.type){
-//         case ADVERTS_DETAIL_SUCCESS:
-//             return [action.payload];
-//         default:
-//             return state;
-//     };
-// }
