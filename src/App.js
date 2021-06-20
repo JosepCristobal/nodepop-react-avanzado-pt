@@ -15,7 +15,6 @@ function App() {
           </Route>
           <PrivateRoute path="/adverts/:advertId">
             {routeProps => <AdvertDetailPage {...routeProps} />}
-            {/* {routeProps => <AdvertDetailPage ref={ref} {...routeProps} />} */}
           </PrivateRoute>
           <PrivateRoute path="/advert">
             <NewAdvertPage />
@@ -23,12 +22,9 @@ function App() {
           <PrivateRoute exact path="/">
             <Redirect to='/adverts'  />
           </PrivateRoute>
-          {/* <PrivateRoute exact path="/adverts">
+          <PrivateRoute exact path="/adverts">
             <AdvertsPage />
-          </PrivateRoute> */}
-          <Route exact path="/adverts">
-            <AdvertsPage />
-          </Route>
+          </PrivateRoute>
           <Route path="/404">
             <div
               style={{

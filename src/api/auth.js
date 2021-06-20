@@ -18,6 +18,7 @@ export const login = (credentials) => {
 };
 
 export const logout = () => {
+  //return Promise.resolve().then(resetClient).then(storage.clear);
   return Promise.resolve().then(() => {
     resetClient();
     storage.remove('auth');

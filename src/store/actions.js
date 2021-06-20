@@ -67,6 +67,13 @@ export const authLogout = () => {
   };
 };
 
+export const logoutAction = () => {
+  return async function (dispatch, _getState, { api }) {
+    await api.auth.logout();
+    dispatch(authLogout());
+  };
+};
+
 //Adverts
 export const advertsLoadedRequest = () =>{
   return {
