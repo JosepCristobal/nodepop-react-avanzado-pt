@@ -8,6 +8,8 @@ import { advertsDetailAction, advertDeledAction } from '../../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAdvertDetailSelector, getAdvertDetail, getUi} from '../../../store/selectors'
 import defaultPhoto from '../../../assets/2574831-200.png'
+import AdvertDetail from './AdvertDetail';
+
 
 // const AdvertDetailPage = ({ className, ...props }) =>{
 // const AdvertDetailPage = ({ ...props }) =>{
@@ -19,7 +21,7 @@ function AdvertDetailPage() {
 
   console.log('Id del anuncio: ',advertId)
   //const ad2 = useSelector(getAdvertDetailSelector(advertId));
-  const ad = useSelector(state=>getAdvertDetail(state,advertId));
+  const advert = useSelector(state=>getAdvertDetail(state,advertId));
   //console.log('Resultado de ad2: ', ad2)
 
   const dispatch = useDispatch();
@@ -44,33 +46,43 @@ function AdvertDetailPage() {
   const baseUrlPhoto =`${process.env.REACT_APP_API_BASE_URL}`;
 
   //TODO Repasarlo
-  if (error && error.status === 404) {
-      return <Redirect to="/404" />;
+  // if (error && error.status === 404) {
+  //     return <Redirect to="/404" />;
+  // }
+  if (error?.statusCode === 401) {
+    return <Redirect to="/login" />;
   }
 
-  //if (!ad) return <Redirect to="/" />;
+  if (error?.statusCode === 404) {
+    return <Redirect to="/404" />;
+  }
+ const redir = `/adverts/${advertId}`
+  //if (!advert) return <Redirect to = {redir} />;
   
-  console.log('El anuncio que se ha encontrado: ',ad)
+  console.log('El anuncio que se ha encontrado: ',advert)
   return (
-    <Layout title="Detalle del anuncio" >
-    <div>
-      <Photo src={ad.photo ?baseUrlPhoto+ad.photo: defaultPhoto} className="advert-centerImg advert-imgWidth" />
-    </div>
-    <div>
-      <p>Descripción: {ad.name}</p>
-      <p>Tipo: {ad.sale ? 'Venta':'Compra'}</p>
-      <p>Precio: {ad.price}</p>
-      <p>Categoría: {ad.tags}</p>
-      <p>Publicado el: {ad.createdAt}</p>
-      <Button
-            className="loginForm-submit"
-            variant="primary"
-            onClick={()=>{ window.confirm('Realmente quiere borrar este registro?')?handlerDelete(ad.id):console.log('No borrar')}}>
-            Delete
-        </Button>
-    </div>
-  </Layout>
+    <Layout title="Detalle del anuncio" > 
+      {advert && <AdvertDetail {...advert} onDelete={handlerDelete} />}
+      
+    </Layout>
   );
 }
 
 export default AdvertDetailPage;
+
+{/* <div>
+        <Photo src={advert.photo ?baseUrlPhoto+advert.photo: defaultPhoto} className="advert-centerImg advert-imgWidth" />
+      </div>
+      <div>
+        <p>Descripción: {advert.name}</p>
+        <p>Tipo: {advert.sale ? 'Venta':'Compra'}</p>
+        <p>Precio: {advert.price}</p>
+        <p>Categoría: {advert.tags}</p>
+        <p>Publicado el: {advert.createdAt}</p>
+        <Button
+              className="loginForm-submit"
+              variant="primary"
+              onClick={()=>{ window.confirm('Realmente quiere borrar este registro?')?handlerDelete(advert.id):console.log('No borrar')}}>
+              Delete
+          </Button>
+      </div> */}
