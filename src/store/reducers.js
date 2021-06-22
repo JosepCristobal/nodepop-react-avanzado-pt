@@ -43,6 +43,7 @@ export function adverts(state = initialState.adverts, action){
         case ADVERTS_LOADED_SUCCESS:
             return action.payload;
         case ADVERTS_CREATED_SUCCESS:
+        case ADVERTS_DETAIL_SUCCESS:
             return [...state, action.payload];
         default:
             return state;

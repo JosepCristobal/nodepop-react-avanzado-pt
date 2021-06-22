@@ -35,7 +35,7 @@ const filterByPrice = (advert,filterSearch) =>{
     if (max>=min) {
         //console.log('Precio', advert.price)
         return advert.price>=min && advert.price<=max
-    };
+    }
 
 }
    

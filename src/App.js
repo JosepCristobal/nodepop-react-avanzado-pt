@@ -4,37 +4,40 @@ import { Switch, Route } from 'react-router-dom';
 import { LoginPage, PrivateRoute } from './components/auth';
 import { AdvertsPage, NewAdvertPage, AdvertDetailPage } from './components/adverts';
 import  { Redirect } from 'react-router-dom'
+import NotFoundPage from './NotFoundPage';
 
 function App() {
   return (
     <div className="App">
        
        <Switch>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <PrivateRoute path="/adverts/:advertId">
-            {routeProps => <AdvertDetailPage {...routeProps} />}
-          </PrivateRoute>
-          <PrivateRoute path="/advert">
+          <PrivateRoute exact path="/advert/new">
             <NewAdvertPage />
           </PrivateRoute>
-          <PrivateRoute exact path="/">
-            <Redirect to='/adverts'  />
+
+          <PrivateRoute exact path="/adverts/:advertId">
+            <AdvertDetailPage/>
+            {/* {routeProps => <AdvertDetailPage {...routeProps} />} */}
           </PrivateRoute>
+
           <PrivateRoute exact path="/adverts">
             <AdvertsPage />
           </PrivateRoute>
-          <Route path="/404">
-            <div
-              style={{
-                textAlign: 'center',
-                fontSize: 48,
-                fontWeight: 'bold',
-              }}>
-              404 | Not found page
-            </div>
+
+          <Route exact path="/login">
+            <LoginPage />
           </Route>
+         
+          <Route exact path="/404">
+            <NotFoundPage />
+          </Route>
+          <PrivateRoute exact path="/">
+            <Redirect to='/adverts'  />
+          </PrivateRoute>
+         
+          <Redirect to="/404">
+           
+          </Redirect>
         </Switch>
        
     </div>

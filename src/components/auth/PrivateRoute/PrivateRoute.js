@@ -6,7 +6,7 @@ import { getIsLogged } from '../../../store/selectors'
 
 
 const PrivateRoute = ({ isLogged, ...props}) => {
-  
+
   return isLogged ? (
     <Route {...props} />
   ) : (

@@ -18,14 +18,15 @@ import { advertsLoadAction} from '../../../store/actions';
 //   </div>
 // );
 
-const AdvertsPage = ({ className, ...props }) => {
+// const AdvertsPage = ({ className, ...props }) => {
+const AdvertsPage = ({ ...props }) => {
   // const [adverts, setAdverts] = React.useState([]);
   const dispatch = useDispatch();
   const adverts = useSelector(getAdverts)
   React.useEffect(() => {
     //getLatestAdverts().then(adverts => dispatch(advertsLoaded(adverts)));
     dispatch(advertsLoadAction());
-  }, []);
+  }, [dispatch]);
  //Filtrado de anuncios
   return (
     <Layout title="Encuentra u ofrece lo que más te interesa" {...props}>

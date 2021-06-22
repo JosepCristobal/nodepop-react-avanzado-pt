@@ -1,4 +1,4 @@
-import { getTagsLoaded, getAdvertDetailSelector} from './selectors';
+import { getTagsLoaded, getAdvertDetail} from './selectors';
 import {
   AUTH_LOGIN_REQUEST,
   AUTH_LOGIN_SUCCESS,
@@ -11,6 +11,7 @@ import {
   ADVERTS_CREATED_SUCCESS,
   ADVERTS_CREATED_FAILURE,
   UI_RESET_ERROR,
+  ADVERTS_DETAIL_REQUEST,
   ADVERTS_DETAIL_SUCCESS,
   ADVERTS_DETAIL_FAILURE,
   ADVERTS_CREATED,
@@ -146,7 +147,7 @@ export const tagsLoadAction = () =>{
     //console.log('Los tags cargados son:', tagsLoaded)
     if (tagsLoaded>0) {
       
-      return};
+      return}
     
     dispatch(tagsLoadedRequest())
     try {
@@ -241,7 +242,13 @@ export const advertDeledAction = (advertId) =>{
 }
 
 
-//Detai Adverts
+//Detail Adverts
+export const advertsDetailRequest = ()=>{
+  return {
+    type: ADVERTS_DETAIL_REQUEST,
+  };
+};
+
 export const advertsDeatilSuccess = advert => {
   return {
     type: ADVERTS_DETAIL_SUCCESS,
@@ -257,21 +264,23 @@ export const advertsDetailFailure = (error) =>{
 }
 
 export const advertsDetailAction = (advertId) => {
-  return async function (dispatch, getState, {api, history}){
-    const advertLoaded = getAdvertDetailSelector(advertId)(getState())
-    //console.log('Llegamos a advertsDetailAction Sin acceso al api ', advertLoaded)
+  return async function (dispatch, getState, {api}){
+    const advertLoaded = getAdvertDetail(getState(),advertId)
+    console.log('Llegamos a advertsDetailAction Sin acceso al api ', advertLoaded)
     if (advertLoaded){
       return;
     }
+    dispatch(advertsDetailRequest());
     try {
+      console.log('estamos dentro del actions')
       const advert = await api.adverts.getAdvertDetail(advertId)
       dispatch(advertsDeatilSuccess(advert));
       return advert
     } catch (error) {
       dispatch (advertsDetailFailure(error))
-    } ;
+    } 
   };
-}
+};
 
 export const resetError = () => {
   return {
