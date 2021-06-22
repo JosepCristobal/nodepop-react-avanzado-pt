@@ -13,7 +13,8 @@ const TagsAvailable = ({labels,...props}) =>{
     React.useEffect(() => {
         dispatch(tagsLoadAction());
         //getTagsAdverts().then(setTagsAvailable);
-    }, []);
+    }, [dispatch]);
+
 
     const Data = tagsAvailable,
             MakeItem = function(X) {

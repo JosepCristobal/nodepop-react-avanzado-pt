@@ -1,13 +1,14 @@
 import React from 'react';
 import Layout from '../../layout/Layout';
 import './AdvertDetailPage.css';
-import Photo from '../../shared/Photo';
+//import Photo from '../../shared/Photo';
 import { Redirect, useParams} from 'react-router-dom';
-import { Button  } from '../../shared';
+//import { Button  } from '../../shared';
 import { advertsDetailAction, advertDeledAction } from '../../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAdvertDetailSelector, getAdvertDetail, getUi} from '../../../store/selectors'
-import defaultPhoto from '../../../assets/2574831-200.png'
+//import { getAdvertDetailSelector, getAdvertDetail, getUi} from '../../../store/selectors'
+import { getAdvertDetail, getUi} from '../../../store/selectors'
+//import defaultPhoto from '../../../assets/2574831-200.png'
 import AdvertDetail from './AdvertDetail';
 
 
@@ -28,22 +29,22 @@ function AdvertDetailPage() {
   
   React.useEffect(()=>{
     dispatch(advertsDetailAction(advertId)); 
-    console.log('Hemos pasado por el useEffect')
+    // console.log('Hemos pasado por el useEffect')
   },[dispatch, advertId]);
  
 
-  const { loading, error } = useSelector(getUi);
+  const { error } = useSelector(getUi);
   const handlerDelete = async (idAdvert) =>{
     alert(`Va a borrar el registro núm. ${idAdvert}`)
     try {
       const advertDel = await dispatch(advertDeledAction(idAdvert))
-      console.log ('En delete AdvertDel', advertDel)
+      //console.log ('En delete AdvertDel', advertDel)
     } catch (error) {
       console.log(error)
     }
   }
 
-  const baseUrlPhoto =`${process.env.REACT_APP_API_BASE_URL}`;
+  //const baseUrlPhoto =`${process.env.REACT_APP_API_BASE_URL}`;
 
   //TODO Repasarlo
   // if (error && error.status === 404) {
@@ -56,10 +57,10 @@ function AdvertDetailPage() {
   if (error?.statusCode === 404) {
     return <Redirect to="/404" />;
   }
- const redir = `/adverts/${advertId}`
+ //const redir = `/adverts/${advertId}`
   //if (!advert) return <Redirect to = {redir} />;
   
-  console.log('El anuncio que se ha encontrado: ',advert)
+  //console.log('El anuncio que se ha encontrado: ',advert)
   return (
     <Layout title="Detalle del anuncio" > 
       {advert && <AdvertDetail {...advert} onDelete={handlerDelete} />}
