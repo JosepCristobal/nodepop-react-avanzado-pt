@@ -54,9 +54,6 @@ export function adverts(state = initialState.adverts, action){
 }
 
 export function tags(state = initialState.tags, action){
-    if (action.error){
-        return { ...state,loading: false, error: action.payload};
-    }
     switch (action.type){
         case TAGS_LOADED_SUCCESS:
             return action.payload;
