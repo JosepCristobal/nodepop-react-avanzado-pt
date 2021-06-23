@@ -40,7 +40,7 @@ function AdvertDetailPage() {
       const advertDel = await dispatch(advertDeledAction(idAdvert))
       //console.log ('En delete AdvertDel', advertDel)
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
@@ -70,20 +70,3 @@ function AdvertDetailPage() {
 }
 
 export default AdvertDetailPage;
-
-{/* <div>
-        <Photo src={advert.photo ?baseUrlPhoto+advert.photo: defaultPhoto} className="advert-centerImg advert-imgWidth" />
-      </div>
-      <div>
-        <p>Descripción: {advert.name}</p>
-        <p>Tipo: {advert.sale ? 'Venta':'Compra'}</p>
-        <p>Precio: {advert.price}</p>
-        <p>Categoría: {advert.tags}</p>
-        <p>Publicado el: {advert.createdAt}</p>
-        <Button
-              className="loginForm-submit"
-              variant="primary"
-              onClick={()=>{ window.confirm('Realmente quiere borrar este registro?')?handlerDelete(advert.id):console.log('No borrar')}}>
-              Delete
-          </Button>
-      </div> */}

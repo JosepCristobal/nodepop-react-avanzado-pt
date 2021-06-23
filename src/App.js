@@ -11,6 +11,10 @@ function App() {
     <div className="App">
        
        <Switch>
+          <Route exact path="/login">
+            <LoginPage />
+          </Route>
+
           <PrivateRoute exact path="/advert/new">
             <NewAdvertPage />
           </PrivateRoute>
@@ -23,10 +27,6 @@ function App() {
           <PrivateRoute exact path="/adverts">
             <AdvertsPage />
           </PrivateRoute>
-
-          <Route exact path="/login">
-            <LoginPage />
-          </Route>
          
           <Route exact path="/404">
             <NotFoundPage />

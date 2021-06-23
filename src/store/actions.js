@@ -56,8 +56,8 @@ export const loginAction = credentials => {
       history.replace(from);
     } catch (error) {
       dispatch(authLoginFailure(error));
-      console.log('llegamos al push del error')
-      //history.push("/")
+      console.error('llegamos al push del error del login')
+      // history.push("/")
     } 
 
   }   

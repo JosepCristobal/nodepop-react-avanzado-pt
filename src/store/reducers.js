@@ -17,7 +17,10 @@ import {
   
 export const initialState = {
     auth: false,
-    adverts: [],
+    adverts: {
+        loaded: false,
+        data: [],
+    },
     tags: [],
     ui: {
         loading: false,
@@ -30,25 +33,38 @@ export const initialState = {
 export function auth(state = initialState.auth, action){
     switch (action.type) {
         case AUTH_LOGIN_SUCCESS:
-        return true;
+            return true;
         case AUTH_LOGOUT:
-        return false;
+            return false;
         default:
-        return state;
+            return state;
     }
 }
 
 export function adverts(state = initialState.adverts, action){
     switch (action.type){
         case ADVERTS_LOADED_SUCCESS:
-            return action.payload;
+            return { ...state, loaded: true, data: action.payload };
         case ADVERTS_CREATED_SUCCESS:
         case ADVERTS_DETAIL_SUCCESS:
-            return [...state, action.payload];
+            return { ...state, data: [...state.data, action.payload] };
         default:
             return state;
     }
 }
+
+export function tags(state = initialState.tags, action){
+    if (action.error){
+        return { ...state,loading: false, error: action.payload};
+    }
+    switch (action.type){
+        case TAGS_LOADED_SUCCESS:
+            return action.payload;
+        default:
+            return state;
+    };
+}
+
 
 export function ui(state = initialState.ui, action) {
     if (action.error){
@@ -73,17 +89,6 @@ export function ui(state = initialState.ui, action) {
     }
 }
 
-export function tags(state = initialState.tags, action){
-    if (action.error){
-        return { ...state,loading: false,error: action.payload};
-    }
-    switch (action.type){
-        case TAGS_LOADED_SUCCESS:
-            return action.payload;
-        default:
-            return state;
-    };
-}
 
 export function advertDel(state = initialState.advertDel, action){
     if (action.error){
