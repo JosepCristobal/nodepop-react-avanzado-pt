@@ -8,7 +8,7 @@ import useForm from '../../../hooks/useForm';
 import './LoginForm.css';
 import CheckField from '../../shared/CheckField';
 
-function LoginForm({ onSubmit, isLoading }) {
+function LoginForm({ onSubmit, loading }) {
   const [credentials, handleChange, handleSubmit] = useForm({
     email: '',
     password: '',
@@ -51,7 +51,7 @@ function LoginForm({ onSubmit, isLoading }) {
         type="submit"
         className="loginForm-submit"
         variant="primary"
-        disabled={isLoading || !email || !password}
+        disabled={loading || !email || !password}
       >
         Log in
       </Button>

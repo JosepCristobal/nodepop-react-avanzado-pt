@@ -8,7 +8,7 @@ import './LoginPage.css';
 function LoginPage() {
   const firstTime = React.useRef(true);
   const dispatch = useDispatch();
-  const {isLoading, error} = useSelector(getUi);
+  const {loading, error} = useSelector(getUi);
 
   React.useEffect(() => {
     if (firstTime) {
@@ -24,7 +24,8 @@ function LoginPage() {
   return (
     <div className="loginPage">
       <h1 className="loginPage-title">Log in to NodePop</h1>
-      <LoginForm isLoading={isLoading} onSubmit={handleSubmit} />
+      <LoginForm  onSubmit={handleSubmit} />
+      {loading && <p>...login in nodepop</p>}
       {error && (
         <div onClick={() => dispatch(resetError())} className="loginPage-error">
           {error.message}
