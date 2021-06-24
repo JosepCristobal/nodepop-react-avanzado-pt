@@ -1,4 +1,4 @@
-# React avanzado
+# React avanzado v2
 
 ## Práctica de React avanzado (nodepop-react-avanzado)
 
@@ -148,6 +148,7 @@ mockeando la acción.
       	
     
 79. Pasamos a la entrega de la práctica porque se acerca la hora máxima y no damos con la solución.
+80. **Todo Solucionado**. Después de recibir sugerencias de corrección por parte del formador, se procede a solucionar todo lo que no funcionaba de forma correcta.
 
 
 ## Conclusiones finales
@@ -163,5 +164,18 @@ Realmente ha sido una práctica muy interesante y me lo he pasado muy bien, aunq
 Muchas gracias David por todo.
 
 Un placer!
+
+
+## Correcciones en la versión 2
+La primera entrega ha sido "NO APTO", en esta versión 2 se ha corregido todos los errores que se reportarón y se han hecho pequeñas mejoras en redirección a páginas de error.  
+		
+1. No pasan algunos tests, los reducers ni los selectores. La forma del estado en los test no se adapta a lo que hacen los selectores en realidad.
+	* Se ha revisado todo el código y se han corregido todos los errores en el test. Ahora los pasa todos de forma correcta.
+
+	
+2. En el logout estás llamando directamente al api desde el componente. Mejor meter todo ese flujo en una acción y así los componentes no se preocupan más del api.
+3. Tienes un fallo al cargar el listado sin estar el usuario logueado, cosa que no debería ocurrir porque si no hay usuario esa ruta no debería ser accesible. Pero lo es y eso provoca un error al intentar renderizar AdvertsPage.
+4. Si refresco desde el detalle me cambia al listado.
+
 
 
