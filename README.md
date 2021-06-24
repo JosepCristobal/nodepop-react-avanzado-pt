@@ -1,7 +1,7 @@
 # React avanzado v2
 
 ## Práctica de React avanzado (nodepop-react-avanzado)
-
+###[Notas v2](https://github.com/JosepCristobal/nodepop-react-avanzado-pt#correcciones-en-la-versión-2)
 ## Objetivos   
 En base a la práctica anterior de React Fundamentos, deberemos implementar REDUX y TESTING.
 
@@ -100,37 +100,37 @@ mockeando la acción.
 51. En actions creamos advertsDetailSuccess advertsDetailAction.
 52. Completamos reducers.
 53. Funcionando. Pero cuando ponemos la url directamente en el navegador con el id del anuncio, no funciona. Si lo hacemos por la aplicación, todo funciona correctamente.
-53. Vamos a por el borrado del anuncio, con el procedimiento habitual. Redux thunk.
-54. Completado el borrado. Repasamos todo el código a borrar.
-55. Empezamos con los tests unitarios.
-56. Creamos action.test.js.
-57. Tenemos problemas para la puesta en marcha , tenemos el siguiente error:
+54. Vamos a por el borrado del anuncio, con el procedimiento habitual. Redux thunk.
+55. Completado el borrado. Repasamos todo el código a borrar.
+56. Empezamos con los tests unitarios.
+57. Creamos action.test.js.
+58. Tenemos problemas para la puesta en marcha , tenemos el siguiente error:
             watchmanResponse: {
             error: 'resolve_projpath: path `/Users/jcm/Documents/BootCampWeb/11-React_Avanzado/React_Avanzado_PT/nodepop-react-avanzado/src`: open: /Users/jcm/Documents/BootCampWeb/11-React_Avanzado/React_Avanzado_PT/nodepop-react-avanzado/src: Operation not permitted',
              version: '4.9.0'
   }
-58. Continuamos con los test e intentaremos solucionar el problema al final.
-59. Test acción síncrona authLoginRequest y advertsLoadedSuccess.
-60. Test acción asíncrona loginAction.
-61. Otra alternativa coon redux mock store npm install redux-mock-store --save-dev.
-62. Empezamos con los reducers y creamos reducers.test.js
-63. Testeamos ADVERTS_LOADED_SUCCESS, ADVERTS_DETAIL_SUCCESS
-64. Empezamos con los selectores. selectors.test.js
-65. He conseguido hacer funcionar watchman. configuración y activar permiso den documentos.
-66. yarn test -- --watchAll --coverage nos crea un folder en nuestro proyecto y posemos visualizar de forma gráfica el alcance de nuestros tests.
-67. Pasamos a test de componentes.
-68. Vamos a utilizar enzyme como librería de utilidades para renderizar nuestro componentes. npm install -save-dev enzyme
-69. También instalamos una librería de adaptador de react-16 npm i --save-dev enzyme-adapter-react-16. Hemos tenido problemas con las dependencias, no creo que funcione correctamente
-70. Componente con snapshot testing, utilizaremos enzyme. Creamos LoginForm.test.js
-71. No puedo hacer el test, no consigo instalar esta versión de Enzyme en mi máquina. he encontrado una versión no oficial, pero prefiero no instalarla.
+59. Continuamos con los test e intentaremos solucionar el problema al final.
+60. Test acción síncrona authLoginRequest y advertsLoadedSuccess.
+61. Test acción asíncrona loginAction.
+62. Otra alternativa coon redux mock store npm install redux-mock-store --save-dev.
+63. Empezamos con los reducers y creamos reducers.test.js
+64. Testeamos ADVERTS_LOADED_SUCCESS, ADVERTS_DETAIL_SUCCESS
+65. Empezamos con los selectores. selectors.test.js
+66. He conseguido hacer funcionar watchman. configuración y activar permiso den documentos.
+67. yarn test -- --watchAll --coverage nos crea un folder en nuestro proyecto y posemos visualizar de forma gráfica el alcance de nuestros tests.
+68. Pasamos a test de componentes.
+69. Vamos a utilizar enzyme como librería de utilidades para renderizar nuestro componentes. npm install -save-dev enzyme
+70. También instalamos una librería de adaptador de react-16 npm i --save-dev enzyme-adapter-react-16. Hemos tenido problemas con las dependencias, no creo que funcione correctamente
+71. Componente con snapshot testing, utilizaremos enzyme. Creamos LoginForm.test.js
+72. No puedo hacer el test, no consigo instalar esta versión de Enzyme en mi máquina. he encontrado una versión no oficial, pero prefiero no instalarla.
 '@wojtekmaj/enzyme-adapter-react-17'; 
-72. Al final lo he instalado añadiendo al final --legacy-peer-deps para que no tenga en cuenta las versiones.
-73. AdvertDetailPage, exportamos la función para poder hacer un buen test.
-74. Pasamos al snapshot de testing. Instalamos enzyme-to-json.
-75. npm install --save-dev enzyme-to-json
-76. Añadimos a nuestro package.json una nueva configuración de "jest:{snapshotSerializers :["enzime-to-json/serializer"]}
-77. Pequeños ajustes en nuestro proyecto en la parte de test.
-78. En los tests, tenemos un pequeño desajuste  que no hay forma de solventar. No nos reconoce .sort como una función.
+73. Al final lo he instalado añadiendo al final --legacy-peer-deps para que no tenga en cuenta las versiones.
+74. AdvertDetailPage, exportamos la función para poder hacer un buen test.
+75. Pasamos al snapshot de testing. Instalamos enzyme-to-json.
+76. npm install --save-dev enzyme-to-json
+77. Añadimos a nuestro package.json una nueva configuración de "jest:{snapshotSerializers :["enzime-to-json/serializer"]}
+78. Pequeños ajustes en nuestro proyecto en la parte de test.
+79. En los tests, tenemos un pequeño desajuste  que no hay forma de solventar. No nos reconoce .sort como una función.
 
 
  		TypeError: state.adverts.sort is not a function
@@ -147,8 +147,8 @@ mockeando la acción.
       	at Object.<anonymous> (src/store/selectors.test.js:10:22)     
       	
     
-79. Pasamos a la entrega de la práctica porque se acerca la hora máxima y no damos con la solución.
-80. **Todo Solucionado**. Después de recibir sugerencias de corrección por parte del formador, se procede a solucionar todo lo que no funcionaba de forma correcta.
+80. Pasamos a la entrega de la práctica porque se acerca la hora máxima y no damos con la solución.
+81. **Todo Solucionado**. Después de recibir sugerencias de corrección por parte del formador, se procede a solucionar todo lo que no funcionaba de forma correcta.
 
 
 ## Conclusiones finales
@@ -172,9 +172,9 @@ La primera entrega ha sido "NO APTO", en esta versión 2 se han corregido todos 
 1. No pasan algunos tests, los reducers ni los selectores. La forma del estado en los test no se adapta a lo que hacen los selectores en realidad.
 	* Se ha revisado todo el código y se han corregido todos los errores en el test. Ahora los pasa todos de forma correcta.
 
-<p align="center">
-<img src="https://github.com/JosepCristobal/nodepop-react-avanzado-pt/blob/master/public/Tests.png?raw=true" alt="Tags disponibles" width="300"/>
-</p>
+	<p align="center">
+	<img src="https://github.com/JosepCristobal/nodepop-react-avanzado-pt/blob/master/public/Tests.png?raw=true" alt="Tags disponibles" width="300"/>
+	</p>
 	
 2. En el logout estás llamando directamente al api desde el componente. Mejor meter todo ese flujo en una acción y así los componentes no se preocupan más del api.
 	* Refactorizado y funcionando.
