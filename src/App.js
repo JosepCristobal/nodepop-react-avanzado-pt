@@ -21,7 +21,6 @@ function App() {
 
           <PrivateRoute exact path="/adverts/:advertId">
             <AdvertDetailPage/>
-            {/* {routeProps => <AdvertDetailPage {...routeProps} />} */}
           </PrivateRoute>
 
           <PrivateRoute exact path="/adverts">

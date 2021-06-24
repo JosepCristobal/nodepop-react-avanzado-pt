@@ -50,13 +50,11 @@ export const loginAction = credentials => {
     
     try {
       await api.auth.login(credentials);
-      //isLogged.current = true;
       dispatch(authLoginSuccess());
       const { from } = history.location.state || { from: { pathname: '/' } };
       history.replace(from);
     } catch (error) {
       dispatch(authLoginFailure(error));
-      //console.error('llegamos al push del error del login')
     } 
 
   }   
@@ -145,7 +143,6 @@ export const tagsLoadAction = () =>{
   return async function (dispatch,getState, { api }){
     const tagsLoaded = getTagsLoaded(getState())
     //Si los tags se han cargado una vez, no los volvemos a cargar, los recuperamos de redux
-    //console.log('Los tags cargados son:', tagsLoaded)
     if (tagsLoaded>0) {
       
       return}

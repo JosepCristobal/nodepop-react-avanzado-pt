@@ -167,15 +167,21 @@ Un placer!
 
 
 ## Correcciones en la versión 2
-La primera entrega ha sido "NO APTO", en esta versión 2 se ha corregido todos los errores que se reportarón y se han hecho pequeñas mejoras en redirección a páginas de error.  
+La primera entrega ha sido "NO APTO", en esta versión 2 se han corregido todos los errores que se reportarón y se han hecho pequeñas mejoras en redirección a páginas de error.  
 		
 1. No pasan algunos tests, los reducers ni los selectores. La forma del estado en los test no se adapta a lo que hacen los selectores en realidad.
 	* Se ha revisado todo el código y se han corregido todos los errores en el test. Ahora los pasa todos de forma correcta.
 
+<p align="center">
+<img src="https://github.com/JosepCristobal/nodepop-react-avanzado-pt/blob/master/public/Tests.png?raw=true" alt="Tags disponibles" width="300"/>
+</p>
 	
 2. En el logout estás llamando directamente al api desde el componente. Mejor meter todo ese flujo en una acción y así los componentes no se preocupan más del api.
+	* Refactorizado y funcionando.
 3. Tienes un fallo al cargar el listado sin estar el usuario logueado, cosa que no debería ocurrir porque si no hay usuario esa ruta no debería ser accesible. Pero lo es y eso provoca un error al intentar renderizar AdvertsPage.
+	* Refactorizado y funcionando de forma correcta.
 4. Si refresco desde el detalle me cambia al listado.
+	* Refactorizado y funcionando correctamente.
 
 
 
