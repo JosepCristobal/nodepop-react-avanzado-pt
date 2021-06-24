@@ -1,6 +1,7 @@
 import { adverts, initialState } from './reducers';
 import { ADVERTS_LOADED_SUCCESS, ADVERTS_DETAIL_SUCCESS } from './types';
 
+// Test OK
 
 describe('adverts', () => {
   test('should manage ANY action', () => {
@@ -12,10 +13,12 @@ describe('adverts', () => {
 
   test('should manage ADVERTS_LOADED_SUCCESS action', () => {
     const state = initialState.adverts;
-    const advertsData = [];
-    const action = { type: ADVERTS_LOADED_SUCCESS, payload: advertsData };
+    //const advertsData = [];
+    const action = { type: ADVERTS_LOADED_SUCCESS, payload: [] };
     const expectedState = {
-      ...initialState.adverts, advertsData,
+      ...initialState.adverts,
+      loaded:true,
+      data: action.payload,
     };
     const nextState = adverts(state, action);
     expect(nextState).toStrictEqual(expectedState);
@@ -26,7 +29,9 @@ describe('adverts', () => {
     const advert = {};
     const action = { type: ADVERTS_DETAIL_SUCCESS, payload: advert };
     const expectedState = {
-      ...initialState.adverts,...initialState.adverts, advert,
+      ...initialState.adverts,
+      loaded: false,
+      data:[...initialState.adverts.data, advert],
     };
     const nextState = adverts(state, action);
     expect(nextState).toStrictEqual(expectedState);
