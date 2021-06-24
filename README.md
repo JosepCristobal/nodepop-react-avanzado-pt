@@ -1,7 +1,7 @@
 # React avanzado v2
 
 ## Práctica de React avanzado (nodepop-react-avanzado)
-###[Notas v2](https://github.com/JosepCristobal/nodepop-react-avanzado-pt#correcciones-en-la-versión-2)
+### [Notas v2](https://github.com/JosepCristobal/nodepop-react-avanzado-pt#correcciones-en-la-versión-2)
 ## Objetivos   
 En base a la práctica anterior de React Fundamentos, deberemos implementar REDUX y TESTING.
 
