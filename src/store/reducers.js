@@ -87,11 +87,7 @@ export function ui(state = initialState.ui, action) {
 }
 
 
-export function advertDel(state = initialState.advertDel, action){
-    if (action.error){
-            return { ...state,loading: false,error: action.payload};
-        }
-    
+export function advertDel(state = initialState.advertDel, action){ 
     switch (action.type){
         case ADVERT_DELETE_SUCCESS:
             return action.payload;
